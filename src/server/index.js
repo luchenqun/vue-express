@@ -14,6 +14,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 
 import config from '../../build/webpack.dev.conf'
+import api from './router/api.js'
 
 const app = express()
 
@@ -46,6 +47,8 @@ app.get('/', function (req, res) {
   res.sendFile('./views/index.html')
 })
 
+app.use('/api', api);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error('Not Found')
@@ -60,6 +63,6 @@ app.use(function (err, req, res, next) {
   res.send(err.message)
 })
 
-app.listen(4000)
+app.listen(5000)
 
 export default app
