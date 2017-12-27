@@ -9,6 +9,14 @@
 
 <script>
 import axios from "axios";
+async function asyncFun() {
+  var value = 10;
+  return value;
+}
+(async () => {
+  console.log(await asyncFun());
+})();
+
 export default {
   data() {
     return {
@@ -16,13 +24,19 @@ export default {
     };
   },
   methods: {
-    open() {
-      var self = this;
-      axios.post("/api/time", { time: new Date().getTime() }).then(data => {
-        self.$Notice.success({
-          title: "Notification title",
-          desc: JSON.stringify(data)
-        });
+    async time() {
+      return axios.post("/api/time", { time: new Date().getTime() });
+    },
+    async name() {
+      return axios.post("/api/name", {hello : 'world' });
+    },
+    async open() {
+      var name = await this.name();
+      var data = await this.time();
+
+      this.$Notice.success({
+        title: "Notification title",
+        desc: JSON.stringify(data)
       });
     }
   }

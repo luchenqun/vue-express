@@ -1,1 +1,1 @@
-## 此文件夹专门用于存放Dao层文件
+## 此文件夹专门用于存放Dao(Data Access Object)层文件

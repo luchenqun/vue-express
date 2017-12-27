@@ -7,4 +7,14 @@ api.post('/time', function (req, res) {
         count: count++
     })
 });
+
+api.post('/name', function (req, res) {
+    console.log("data:", req.body);
+    setTimeout(() => {
+        res.json({
+            name:"lcq"
+        })
+    }, 3000)
+});
+
 module.exports = api;
